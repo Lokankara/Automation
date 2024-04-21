@@ -1,12 +1,12 @@
 package com.luma.selenium;
 
-import com.luma.runner.BaseTest;
+import com.luma.runner.BaseSelenium;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 import static com.luma.runner.TestData.MAGENTO_BASE_URL;
 
-public class SignInSeleniumTest extends BaseTest {
+public class SignInSeleniumTest extends BaseSelenium {
 
     @Test
     public void testSignIn() {

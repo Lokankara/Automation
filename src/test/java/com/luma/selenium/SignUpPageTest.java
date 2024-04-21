@@ -4,14 +4,13 @@ import com.luma.model.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import com.luma.runner.BaseTest;
+import com.luma.runner.BaseSelenium;
 
-public class SignUpPageTest extends BaseTest {
+public class SignUpPageTest extends BaseSelenium {
 
 
     @BeforeMethod
     public void beforeClass() {
-        getPage().close();
         mainPage = new MainPage(getDriver());
     }
 

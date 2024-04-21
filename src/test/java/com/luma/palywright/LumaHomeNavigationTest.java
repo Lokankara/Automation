@@ -1,5 +1,6 @@
 package com.luma.palywright;
 
+import com.luma.runner.LocatorPlayWright;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import org.testng.Assert;
@@ -11,7 +12,7 @@ import java.util.List;
 import static com.luma.runner.TestData.MAGENTO_BASE_URL;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-public class LumaHomeNavigationTest extends PlayWright {
+public class LumaHomeNavigationTest extends LocatorPlayWright {
     private final List<String> ExpectedNamesWomenSection = List.of("Tops", "Bottoms");
     private final List<String> ExpectedNamesTopsSection = List.of("Jackets", "Hoodies & Sweatshirts", "Tees", "Bras & Tanks");
     private final List<String> ExpectedNamesBottomsSection = List.of("Pants", "Shorts");

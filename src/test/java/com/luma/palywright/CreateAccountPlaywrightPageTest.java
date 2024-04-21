@@ -1,21 +1,17 @@
 package com.luma.palywright;
 
 import com.luma.model.User;
+import com.luma.runner.LocatorPlayWright;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static com.luma.runner.TestData.MAGENTO_BASE_URL;
 
-public class CreateAccountPlaywrightPageTest extends PlayWright {
+public class CreateAccountPlaywrightPageTest extends LocatorPlayWright {
 
     private static final Logger logger = LogManager.getLogger(CreateAccountPlaywrightPageTest.class);
-    @BeforeMethod
-    public void before() {
-        getDriver().quit();
-    }
 
     @Test
     void testSignInUser() {

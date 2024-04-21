@@ -1,19 +1,24 @@
 package com.luma.runner;
 
-import com.microsoft.playwright.*;
-import org.openqa.selenium.WebDriver;
+import com.microsoft.playwright.Browser;
+import com.microsoft.playwright.BrowserContext;
+import com.microsoft.playwright.Page;
+import com.microsoft.playwright.Playwright;
 import org.testng.ITestResult;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 
 import java.lang.reflect.Method;
 import java.nio.file.Paths;
 
-public abstract class BaseTest {
-    private WebDriver driver;
+public class BasePlayWright {
+
+    private Page page;
+    private BrowserContext context;
     private final Playwright playwright = Playwright.create();
     private final Browser browser = BaseUtils.createPWBrowser(playwright);
-    private BrowserContext context;
-    private Page page;
 
     @BeforeSuite
     void createPlaywrightBrowser() {
@@ -24,16 +29,12 @@ public abstract class BaseTest {
 
     @BeforeMethod
     protected void beforeMethod() {
-        driver = BaseUtils.createDriver();
         context = BaseUtils.createContext(browser);
         page = context.newPage();
     }
 
     @AfterMethod
     protected void afterMethod(ITestResult testResult, Method testMethod) {
-        if (driver != null) {
-            driver.quit();
-        }
 
         if (page != null) {
             page.close();
@@ -59,10 +60,6 @@ public abstract class BaseTest {
         if(playwright != null) {
             playwright.close();
         }
-    }
-
-    public WebDriver getDriver() {
-        return driver;
     }
 
     public Page getPage() {

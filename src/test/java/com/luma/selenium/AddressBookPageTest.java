@@ -5,9 +5,9 @@ import com.luma.model.User;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
-import com.luma.runner.BaseTest;
+import com.luma.runner.BaseSelenium;
 
-public class AddressBookPageTest extends BaseTest {
+public class AddressBookPageTest extends BaseSelenium {
 
     private static final Logger logger = LogManager.getLogger(AddressBookPageTest.class);
 

@@ -2,9 +2,9 @@ package com.luma.selenium;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import com.luma.runner.BaseTest;
+import com.luma.runner.BaseSelenium;
 
-public class MainPageTest extends BaseTest {
+public class MainPageTest extends BaseSelenium {
 
     @Test
     public void testMainPageElements() {

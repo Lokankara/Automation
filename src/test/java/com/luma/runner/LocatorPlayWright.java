@@ -1,11 +1,9 @@
-package com.luma.palywright;
+package com.luma.runner;
 
-import com.luma.runner.BaseTest;
-import com.microsoft.playwright.Locator;
-import com.microsoft.playwright.Page;
+import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.AriaRole;
 
-public abstract class PlayWright extends BaseTest {
+public abstract class LocatorPlayWright extends BasePlayWright {
 
     protected Locator findByText(String text) {
         return getPage().getByText(text, new Page.GetByTextOptions().setExact(true));

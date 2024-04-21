@@ -1,6 +1,6 @@
 package com.luma.selenium;
 
-import com.luma.runner.BaseTest;
+import com.luma.runner.BaseSelenium;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 import static com.luma.runner.TestData.MAGENTO_BASE_URL;
 
-public class LoginPageTest extends BaseTest {
+public class LoginPageTest extends BaseSelenium {
 
     @Test
     public void testNavigationBar(){

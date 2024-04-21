@@ -1,6 +1,6 @@
 package com.luma.selenium;
 
-import com.luma.runner.BaseTest;
+import com.luma.runner.BaseSelenium;
 import com.luma.runner.Helper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -12,13 +12,12 @@ import java.util.stream.Collectors;
 
 import static com.luma.runner.TestData.MAGENTO_BASE_URL;
 
-public class VerifyDescendingSortByPriceSeleniumTest extends BaseTest {
+public class VerifyDescendingSortByPriceSeleniumTest extends BaseSelenium {
 
     public void openBaseUrlSelenium() {
         getDriver().get(MAGENTO_BASE_URL);
         List<WebElement> consentElements = getDriver().findElements(By.xpath("//p[text()='Consent']"));
-        if(!consentElements.isEmpty()) {
-            getDriver().findElement(By.xpath("//p[text()='Consent']")).click();
+        if(!consentElements.isEmpty()) {getDriver().findElement(By.xpath("//p[text()='Consent']")).click();
         }
     }
 

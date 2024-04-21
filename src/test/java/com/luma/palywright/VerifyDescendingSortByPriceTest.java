@@ -1,5 +1,6 @@
 package com.luma.palywright;
 
+import com.luma.runner.LocatorPlayWright;
 import com.luma.runner.TestData;
 import com.microsoft.playwright.Locator;
 import org.testng.Assert;
@@ -9,7 +10,7 @@ import java.util.List;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-public class VerifyDescendingSortByPriceTest extends PlayWright {
+public class VerifyDescendingSortByPriceTest extends LocatorPlayWright {
 
     @Test()
     public void testDescendingSortByPrice() throws InterruptedException {
@@ -35,7 +36,6 @@ public class VerifyDescendingSortByPriceTest extends PlayWright {
     }
 
     private void openMenTopsPage() {
-        getDriver().quit();
         openBaseUrlPLay();
         findByText("Men").click();
         findByLink("Tops").click();

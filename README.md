@@ -1,6 +1,6 @@
 # Luma Project
 
-[![Luma Tests Run](https://github.com/Lokankara/Automation/actions/workflows/ci.yml/badge.svg)](https://github.com/Lokankara/Automation/actions/workflows/ci.yml)
+[![Luma Tests Run](https://github.com/Lokankara/Automation/actions/workflows/test-run.yml/badge.svg)](https://github.com/Lokankara/Automation/actions/workflows/test-run.yml)
 
 ### Maven commands
 
