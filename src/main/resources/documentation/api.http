@@ -1,0 +1,32 @@
+POST https://magento.softwaretestingboard.com/rest/default/V1/integration/customer/token/
+Content-Type: application/json
+
+{
+  "username": "tester1234@gmail.com",
+  "password": "tester1234!"
+}
+
+###
+
+GET https://magento.softwaretestingboard.com/rest/default/V1/customers/me
+Content-Type: application/json
+Authorization: Bearer {{ token }}
+
+###
+#
+#GET https://example.com/rest/V1/products
+#GET https://example.com/rest/V1/products/10
+#POST https://example.com/rest/V1/products
+#PUT https://example.com/rest/V1/products/10
+#DELETE https://example.com/rest/V1/products/10
+
+//not working with customer token
+GET https://magento.softwaretestingboard.com/rest/default/V1/products
+Content-Type: application/json
+Authorization: Bearer {{ token }}
+
+###
+//not working with customer token
+GET https://magento.softwaretestingboard.com/rest/V1/products
+Content-Type: application/json
+Authorization: Bearer s2stolquakdqjkvbkd4ihaqc5sdqr411

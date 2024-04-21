@@ -1,0 +1,81 @@
+name: Luma Tests Run
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+permissions:
+  contents: read
+  actions: read
+  checks: write
+
+jobs:
+  run-test:
+    name: 'Run tests'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git clone
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'corretto'
+          cache: maven
+
+      - name: Сache maven
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-maven-
+
+      - name: Install Playwright
+        run: mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps"
+
+      - name: Maven test
+        run: mvn -e test
+        env:
+          BROWSER_OPTIONS: |
+            browserType=chromium;
+            screenWidth=1366;
+            screenHeight=768;
+            isHeadless=true;
+            slowMo=2000;
+            tracing=true;
+            video=true
+          CHROME_OPTIONS: |
+            --disable-gpu;
+            --no-sandbox;
+            --disable-dev-shm-usage;
+            --headless;
+            --window-size=1920,1080;
+            --disable-web-security;
+            --allow-running-insecure-content;
+            --ignore-certificate-errors
+          CI_RUN: true
+
+      - name: Attach screenshots and reports
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: screenshots-and-report
+          path: |
+            screenshots
+            **/surefire-reports/emailable-report.html
+            tracing/
+            video/
+
+      - name: Test Reporter
+        uses: dorny/test-reporter@v1.8.0
+        if: success() || failure()
+        with:
+          name: Luma Project Test Report
+          path: target/surefire-reports/TEST-*.xml
+          reporter: java-junit
