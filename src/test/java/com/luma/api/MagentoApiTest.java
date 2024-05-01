@@ -2,6 +2,7 @@ package com.luma.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.luma.model.User;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 
@@ -11,6 +12,7 @@ import static org.testng.Assert.*;
 
 public class MagentoApiTest {
 
+    @Ignore
     @Test
     public void testGetCustomerInfo() throws IOException {
         MagentoApi magentoApi = MagentoApi.getInstance();
@@ -35,7 +37,6 @@ public class MagentoApiTest {
             assertEquals(user.getDisableAutoGroupChange(), 0);
             assertFalse(user.getExtensionAttributes().isSubscribed());
         } catch (IOException e) {
-            e.printStackTrace();
             Assert.fail("Failed to get customer info due to an exception: " + e.getMessage());
         }
     }

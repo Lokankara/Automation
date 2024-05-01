@@ -16,9 +16,14 @@ public class SignInSeleniumTest extends BaseSelenium {
         getDriver().findElement(By.id("email")).sendKeys("test+123@test.com");
         getDriver().findElement(By.id("pass")).sendKeys("Tester123");
         getDriver().findElement(By.id("send2")).click();
+
+//        WebDriverWait
 //        WebElement element = getDriver().findElement(By.xpath("//div[@class='panel header']//span[@class='logged-in']"));
-//
 //        Assert.assertTrue(element.isDisplayed());
     }
 
+    @Test
+    public void testSign() {
+        getDriver().get(MAGENTO_BASE_URL);
+    }
 }

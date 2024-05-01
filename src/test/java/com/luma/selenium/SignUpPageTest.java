@@ -8,7 +8,6 @@ import com.luma.runner.BaseSelenium;
 
 public class SignUpPageTest extends BaseSelenium {
 
-
     @BeforeMethod
     public void beforeClass() {
         mainPage = new MainPage(getDriver());
