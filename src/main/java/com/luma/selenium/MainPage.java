@@ -3,16 +3,28 @@ package com.luma.selenium;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 import java.util.List;
+import java.util.Random;
+import java.util.stream.IntStream;
 
 public class MainPage extends BasePage {
 
     public MainPage(WebDriver driver) {
         super(driver);
-        this.openPage();
+        this.open();
     }
+
+    @Override
+    BasePage open() {
+        getDriver().get(BASE_URL);
+        return this;
+    }
+
+    @FindBy(css = ".product-item-link")
+    private List<WebElement> products;
 
     @FindBy(xpath = "//a[@class='logo']")
     private WebElement storeLogo;
@@ -53,10 +65,10 @@ public class MainPage extends BasePage {
     @FindBy(css = ".authorization-link + li a")
     private WebElement createAnAccountBtn;
 
-    @FindBy(className = "logged-in")
+    @FindBy(css = ".logged-in")
     private WebElement loginMessage;
 
-    @FindBy(className = "switch")
+    @FindBy(css = ".switch")
     private WebElement accountMenuBtn;
 
     @FindBy(xpath = "//div[@class='panel header']//ul[@class='header links']//button")
@@ -94,7 +106,7 @@ public class MainPage extends BasePage {
     }
 
     public String confirmMessage() {
-        return alert.getText().trim();
+        return getWait(5).until(ExpectedConditions.visibilityOf(alert)).getText().trim();
     }
 
     public boolean isLoggedIn() {
@@ -105,8 +117,34 @@ public class MainPage extends BasePage {
         return contactInformation.getText();
     }
 
-    public void openPage() {
-        getDriver().get(BASE_URL);
+
+    public ProductPage goToProductPage(String productName) {
+        return productName.equals("Random")
+                ? selectRandomProduct() :
+                selectProduct(productName);
+    }
+
+    public NavBar getNavBar() {
+        return new NavBar(getDriver());
+    }
+
+    public ProductPage selectRandomProduct() {
+        products.get(new Random().nextInt(products.size() - 1)).click();
+        return new ProductPage(getDriver());
+    }
+
+    public ProductPage selectProduct(String productName) {
+        products.stream()
+                .filter(p -> productName.equals(p.getText()))
+                .findFirst()
+                .orElseThrow(RuntimeException::new)
+                .click();
+        return new ProductPage(getDriver());
+    }
+
+    public LandingPage addProductsToCart(int quantity) {
+        IntStream.range(0, quantity).forEach(i -> selectRandomProduct().addProductToCart().goBackToCategory());
+        return new LandingPage(getDriver());
     }
 
     public LoginPage clickSignIn() {
@@ -187,11 +225,11 @@ public class MainPage extends BasePage {
     }
 
     public void checkHref() {
-        Assert.assertEquals(yogaCollectionPromo.getAttribute("href"), BASE_URL + "collections/yoga-new.html");
-        Assert.assertEquals(pantsPromo.getAttribute("href"), BASE_URL + "promotions/pants-all.html");
-        Assert.assertEquals(tShirtsPromo.getAttribute("href"), BASE_URL + "promotions/tees-all.html");
-        Assert.assertEquals(erinRecommendsPromo.getAttribute("href"), BASE_URL + "collections/erin-recommends.html");
-        Assert.assertEquals(performancePromo.getAttribute("href"), BASE_URL + "collections/performance-fabrics.html");
-        Assert.assertEquals(ecoFriendlyPromo.getAttribute("href"), BASE_URL + "collections/eco-friendly.html");
+        Assert.assertEquals(yogaCollectionPromo.getAttribute("href"), BASE_URL + "/collections/yoga-new.html");
+        Assert.assertEquals(pantsPromo.getAttribute("href"), BASE_URL + "/promotions/pants-all.html");
+        Assert.assertEquals(tShirtsPromo.getAttribute("href"), BASE_URL + "/promotions/tees-all.html");
+        Assert.assertEquals(erinRecommendsPromo.getAttribute("href"), BASE_URL + "/collections/erin-recommends.html");
+        Assert.assertEquals(performancePromo.getAttribute("href"), BASE_URL + "/collections/performance-fabrics.html");
+        Assert.assertEquals(ecoFriendlyPromo.getAttribute("href"), BASE_URL + "/collections/eco-friendly.html");
     }
 }

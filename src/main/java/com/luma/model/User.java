@@ -2,10 +2,18 @@ package com.luma.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.javafaker.Faker;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 import java.util.Locale;
 
+@Setter
+@Getter
+@ToString
+@EqualsAndHashCode
 public class User {
 
     public User() {
@@ -33,118 +41,6 @@ public class User {
     private int disableAutoGroupChange;
     @JsonProperty("extension_attributes")
     private ExtensionAttributes extensionAttributes;
-
-    public int getId() {
-        return id;
-    }
-
-    public int getGroupId() {
-        return groupId;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public String getCreatedIn() {
-        return createdIn;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public int getStoreId() {
-        return storeId;
-    }
-
-    public int getWebsiteId() {
-        return websiteId;
-    }
-
-    public List<Address> getAddresses() {
-        return addresses;
-    }
-
-    public int getDisableAutoGroupChange() {
-        return disableAutoGroupChange;
-    }
-
-    public ExtensionAttributes getExtensionAttributes() {
-        return extensionAttributes;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setGroupId(int groupId) {
-        this.groupId = groupId;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public void setCreatedIn(String createdIn) {
-        this.createdIn = createdIn;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public void setStoreId(int storeId) {
-        this.storeId = storeId;
-    }
-
-    public void setWebsiteId(int websiteId) {
-        this.websiteId = websiteId;
-    }
-
-    public void setAddresses(List<Address> addresses) {
-        this.addresses = addresses;
-    }
-
-    public void setDisableAutoGroupChange(int disableAutoGroupChange) {
-        this.disableAutoGroupChange = disableAutoGroupChange;
-    }
-
-    public void setExtensionAttributes(ExtensionAttributes extensionAttributes) {
-        this.extensionAttributes = extensionAttributes;
-    }
 
     public void createUser(Faker faker) {
         this.setPassword(faker.internet().emailAddress() + faker.number().randomDigit());

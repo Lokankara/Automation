@@ -6,9 +6,17 @@ import org.openqa.selenium.support.FindBy;
 
 
 public class LoginPage extends BasePage {
+    String url = "https://magento.softwaretestingboard.com/customer/account/login";
 
     public LoginPage(WebDriver driver) {
         super(driver);
+        this.open();
+    }
+
+    @Override
+    BasePage open() {
+        getDriver().get(url);
+        return this;
     }
 
     @FindBy(id = "email")
@@ -37,6 +45,5 @@ public class LoginPage extends BasePage {
 
     private void clickSignInButton() {
         signInBtn.click();
-
     }
 }

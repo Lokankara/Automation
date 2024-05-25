@@ -17,10 +17,8 @@ public class SignUpPageTest extends BaseSelenium {
 
     @Test
     void testSignInUser() {
-        final String expectedText = "Thank you for registering with Main Website Store.";
 
         User user = new User();
-        mainPage.openPage();
         mainPage.clickCreateAnAccountButton()
                 .enterFirstName(user.getFirstname())
                 .enterLastName(user.getLastname())
@@ -32,8 +30,8 @@ public class SignUpPageTest extends BaseSelenium {
         Assert.assertTrue(actualUser.contains(user.getFirstname()), "Text does not contain first name: " + user.getFirstname());
         Assert.assertTrue(actualUser.contains(user.getLastname()), "Text does not contain last name: " + user.getLastname());
         Assert.assertTrue(actualUser.contains(user.getEmail()), "Text does not contain email: " + user.getEmail());
-        String confirmation = mainPage.confirmMessage();
-        Assert.assertEquals(confirmation, expectedText, "Text does not match expected");
+
+        Assert.assertEquals(mainPage.confirmMessage(), "Thank you for registering with Main Website Store.", "Text does not match expected");
 
         if (mainPage.clickShevron().isLoggedIn()) {
             mainPage.clickLogoutAccount().verifyLogOut();

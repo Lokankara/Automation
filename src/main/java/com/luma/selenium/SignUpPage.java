@@ -7,8 +7,16 @@ import org.openqa.selenium.support.FindBy;
 
 public class SignUpPage extends BasePage {
 
+    private static final String SIGNUP_URL = "https://magento.softwaretestingboard.com/customer/account/create/";
+
     public SignUpPage(WebDriver driver) {
         super(driver);
+    }
+
+    @Override
+    BasePage open() {
+        getDriver().get(SIGNUP_URL);
+        return this;
     }
 
     @FindBy(xpath = "//input[@id='firstname']")

@@ -9,9 +9,17 @@ import org.testng.Assert;
 
 public class AddressBookPage extends BasePage {
 
+    private static final String url = "https://magento.softwaretestingboard.com/customer/address/new/";
+
     public AddressBookPage(
             WebDriver driver) {
         super(driver);
+    }
+
+    @Override
+    BasePage open() {
+        getDriver().get(url);
+        return this;
     }
 
     @FindBy(xpath = "//span[@class='base' and @data-ui-id='page-title-wrapper']")
