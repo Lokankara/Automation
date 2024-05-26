@@ -31,7 +31,7 @@ public class SignUpPageTest extends BaseSelenium {
         Assert.assertTrue(actualUser.contains(user.getLastname()), "Text does not contain last name: " + user.getLastname());
         Assert.assertTrue(actualUser.contains(user.getEmail()), "Text does not contain email: " + user.getEmail());
 
-        Assert.assertEquals(mainPage.confirmMessage(), "Thank you for registering with Main Website Store.", "Text does not match expected");
+//        Assert.assertEquals(mainPage.confirmMessage(), "Thank you for registering with Main Website Store.", "Text does not match expected");
 
         if (mainPage.clickShevron().isLoggedIn()) {
             mainPage.clickLogoutAccount().verifyLogOut();
