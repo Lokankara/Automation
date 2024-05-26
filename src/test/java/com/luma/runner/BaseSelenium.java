@@ -1,5 +1,6 @@
 package com.luma.runner;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -8,6 +9,12 @@ import org.testng.annotations.BeforeMethod;
 import java.lang.reflect.Method;
 
 public abstract class BaseSelenium {
+
+    protected String MEN = "";
+    protected String EMAIL = "";
+    protected String PASSWORD = "";
+
+    @Getter
     private WebDriver driver;
 
     @BeforeMethod
@@ -20,9 +27,5 @@ public abstract class BaseSelenium {
         if (driver != null) {
             driver.quit();
         }
-    }
-
-    public WebDriver getDriver() {
-        return driver;
     }
 }

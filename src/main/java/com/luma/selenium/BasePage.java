@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -21,6 +22,9 @@ public abstract class BasePage {
     private final WebDriver driver;
     private WebDriverWait wait;
 
+    @FindBy(css = "li.authorization-link a")
+    private WebElement signInBtn;
+
     protected WebDriverWait getWait(int second) {
         return wait == null ? new WebDriverWait(getDriver(), Duration.ofSeconds(second)) : wait;
     }
@@ -35,6 +39,7 @@ public abstract class BasePage {
     protected WebDriver getDriver() {
         return driver;
     }
+
     public void hover(WebElement element) {
         new Actions(driver).moveToElement(element).perform();
     }
@@ -78,11 +83,12 @@ public abstract class BasePage {
         clickOnElement(addToCartButtonLocator);
     }
 
-    public void gotoCartPage(By cartIconLocator) {
+    public CartPage gotoCartPage(By cartIconLocator) {
         assertVisibleOfElement(cartIconLocator);
         driver.findElement(cartIconLocator).click();
         miniCard.isMiniCartVisible();
         miniCard.clickMiniCart();
+        return new CartPage(getDriver());
     }
 
     public void scrollTo(By locator) {
@@ -152,5 +158,10 @@ public abstract class BasePage {
 
     public MenPage gotoMenPage() {
         return nav.gotoMenPage();
+    }
+
+    public LoginPage clickSignIn() {
+        signInBtn.click();
+        return new LoginPage(getDriver());
     }
 }

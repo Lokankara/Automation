@@ -22,7 +22,7 @@ public class NavBar extends BasePage {
         super(driver);
     }
 
-    public void selectCategory(String categoryName, String... subcategoryNames) {
+    public MainPage selectCategory(String categoryName, String... subcategoryNames) {
         WebElement selectedCategory = categories.stream().filter(c -> categoryName.equals(c.getText()))
                 .findFirst().orElseThrow(RuntimeException::new);
         if (!ArrayUtils.isEmpty(subcategoryNames)) {
@@ -34,10 +34,12 @@ public class NavBar extends BasePage {
             }
         }
         selectedCategory.click();
+
+        return new MainPage(getDriver());
     }
 
     @Override
-    BasePage open() {
+    CartPage open() {
         getDriver().get(CART_URL);
         return new CartPage(getDriver());
     }

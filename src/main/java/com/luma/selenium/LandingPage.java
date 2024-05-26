@@ -5,8 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class LandingPage extends BasePage {
-    @FindBy(css = "li.authorization-link a")
-    private WebElement signInBtn;
 
     @FindBy(css = ".authorization-link + li a")
     private WebElement createAnAccountBtn;
@@ -32,11 +30,6 @@ public class LandingPage extends BasePage {
     BasePage open() {
         getDriver().get(BASE_URL);
         return this;
-    }
-
-    public LoginPage clickSignIn() {
-        signInBtn.click();
-        return new LoginPage(getDriver());
     }
 
     public LoginPage clickCreateAnAccountButton() {

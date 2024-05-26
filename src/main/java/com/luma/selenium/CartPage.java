@@ -92,4 +92,8 @@ public class CartPage extends BasePage {
     public double extractDouble(String text) {
         return Double.parseDouble(extractMoneyValue(text));
     }
+
+    public LandingPage openLandingPage() {
+        return new LandingPage(getDriver());
+    }
 }

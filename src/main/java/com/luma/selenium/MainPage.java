@@ -59,9 +59,6 @@ public class MainPage extends BasePage {
     @FindBy(css = ".action.tocart.primary")
     private WebElement addToCartButton;
 
-    @FindBy(css = "li.authorization-link a")
-    private WebElement signInBtn;
-
     @FindBy(css = ".authorization-link + li a")
     private WebElement createAnAccountBtn;
 
@@ -147,10 +144,6 @@ public class MainPage extends BasePage {
         return new LandingPage(getDriver());
     }
 
-    public LoginPage clickSignIn() {
-        signInBtn.click();
-        return new LoginPage(getDriver());
-    }
 
     public SignUpPage clickCreateAnAccountButton() {
         createAnAccountBtn.click();
