@@ -1,6 +1,7 @@
 # Luma Project
+[![Luma Tests Run](https://github.com/Lokankara/Automation/actions/workflows/test-run.yml/badge.svg?branch=master)](https://github.com/Lokankara/Automation/actions/workflows/test-run.yml)
 
-[![Luma Tests Run](https://github.com/Lokankara/Automation/actions/workflows/test-run.yml/badge.svg)](https://github.com/Lokankara/Automation/actions/workflows/test-run.yml)
+[Allure Report](https://lokankara.github.io/Automation/16/index.html)
 
 ### Maven commands
 
@@ -39,3 +40,7 @@ Clean, install with details
 Clean, install skip Test
 
 `mvn clean install -DskipTests`
+
+Allure Report
+
+`mvn jacoco:`
