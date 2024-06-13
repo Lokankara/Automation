@@ -140,4 +140,8 @@ jobs:
           fetch-depth: 0
 
       - name: Run java checkstyle
-        uses: nikitasavinov/checkstyle-action@0.6.0
+        uses: nikitasavinov/checkstyle-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: 'github-pr-check'
+          tool_name: 'testtool'
