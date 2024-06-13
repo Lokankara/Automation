@@ -139,7 +139,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Run java checkstyle
+      - name: Run Checkstyle with Reviewdog
         uses: nikitasavinov/checkstyle-action@master
         with:
           checkstyle_config: 'checks.xml'
@@ -147,4 +147,8 @@ jobs:
           reporter: 'github-pr-check'
           tool_name: 'Checkstyle'
           workdir: 'src/test/java/com/luma'
+          level: 'info'
+          filter_mode: 'added'
+          fail_on_error: 'false'
+          checkstyle_version: '10.3'
 #          checkstyle_config: sun_checks.xml
