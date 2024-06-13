@@ -134,10 +134,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Clone code from repo
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
         with:
-          fetch-depth: 0
+          distribution: 'adopt'
+          java-version: '11'
+
+      - name: Verify files and directories
+        run: |
+          echo "Listing root directory"
+          ls -la
+          echo "Listing configuration file"
+          cat check.xml
+          echo "Listing work directory"
+          ls -la src/test/java/com/luma
 
       - name: Run java checkstyle
         uses: nikitasavinov/checkstyle-action@master
@@ -145,3 +158,9 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: 'github-pr-check'
           tool_name: 'testtool'
+          checkstyle_config: 'check.xml'
+          workdir: 'src/test/java/com/luma'
+          level: 'info'
+          filter_mode: 'added'
+          fail_on_error: 'false'
+          checkstyle_version: '10.3'
