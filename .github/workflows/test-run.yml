@@ -158,7 +158,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: 'github-pr-check'
           tool_name: 'testtool'
-          checkstyle_config: 'checks.xml'
+          checkstyle_config: 'check.xml'
           workdir: 'src/test/java/com/luma'
           level: 'info'
           filter_mode: 'added'
