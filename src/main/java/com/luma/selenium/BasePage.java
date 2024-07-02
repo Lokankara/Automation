@@ -44,7 +44,7 @@ public abstract class BasePage {
         new Actions(driver).moveToElement(element).perform();
     }
 
-    abstract BasePage open();
+    public abstract BasePage open();
 
     protected String getCurrentUrl() {
         return driver.getCurrentUrl();

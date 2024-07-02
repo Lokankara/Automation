@@ -13,7 +13,7 @@ public class MenPage extends BasePage {
     }
 
     @Override
-    BasePage open() {
+    public BasePage open() {
         getDriver().get(MEN_PAGE_URL);
         return this;
     }

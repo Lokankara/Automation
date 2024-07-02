@@ -14,7 +14,7 @@ public class LoginPage extends BasePage {
     }
 
     @Override
-    BasePage open() {
+    public BasePage open() {
         getDriver().get(url);
         return this;
     }

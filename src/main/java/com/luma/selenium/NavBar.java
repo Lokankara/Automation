@@ -39,7 +39,7 @@ public class NavBar extends BasePage {
     }
 
     @Override
-    CartPage open() {
+    public CartPage open() {
         getDriver().get(CART_URL);
         return new CartPage(getDriver());
     }

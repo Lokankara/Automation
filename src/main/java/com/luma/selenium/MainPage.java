@@ -18,7 +18,7 @@ public class MainPage extends BasePage {
     }
 
     @Override
-    BasePage open() {
+    public BasePage open() {
         getDriver().get(BASE_URL);
         return this;
     }
@@ -115,7 +115,7 @@ public class MainPage extends BasePage {
     }
 
 
-    public ProductPage goToProductPage(String productName) {
+    public ProductsPage goToProductPage(String productName) {
         return productName.equals("Random")
                 ? selectRandomProduct() :
                 selectProduct(productName);
@@ -125,18 +125,18 @@ public class MainPage extends BasePage {
         return new NavBar(getDriver());
     }
 
-    public ProductPage selectRandomProduct() {
+    public ProductsPage selectRandomProduct() {
         products.get(new Random().nextInt(products.size() - 1)).click();
-        return new ProductPage(getDriver());
+        return new ProductsPage(getDriver());
     }
 
-    public ProductPage selectProduct(String productName) {
+    public ProductsPage selectProduct(String productName) {
         products.stream()
                 .filter(p -> productName.equals(p.getText()))
                 .findFirst()
                 .orElseThrow(RuntimeException::new)
                 .click();
-        return new ProductPage(getDriver());
+        return new ProductsPage(getDriver());
     }
 
     public LandingPage addProductsToCart(int quantity) {

@@ -42,7 +42,7 @@ public class CartPage extends BasePage {
     }
 
     @Override
-    BasePage open() {
+    public BasePage open() {
         getDriver().get(CART_URL);
         return this;
     }

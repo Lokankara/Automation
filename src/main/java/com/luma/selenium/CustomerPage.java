@@ -9,7 +9,7 @@ public class CustomerPage extends BasePage {
     }
 
     @Override
-    BasePage open() {
+    public BasePage open() {
         getDriver().get(BASE_URL);
         return this;
     }

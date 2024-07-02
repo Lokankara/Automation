@@ -14,7 +14,7 @@ public class SignUpPage extends BasePage {
     }
 
     @Override
-    BasePage open() {
+    public BasePage open() {
         getDriver().get(SIGNUP_URL);
         return this;
     }

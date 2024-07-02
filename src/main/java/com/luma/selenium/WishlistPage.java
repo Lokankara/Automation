@@ -21,7 +21,7 @@ public class WishlistPage extends BasePage {
 
 
     @Override
-    BasePage open() {
+    public BasePage open() {
         getDriver().get(WISH_LIST_URL);
         return this;
     }

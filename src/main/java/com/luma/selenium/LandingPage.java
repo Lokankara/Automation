@@ -27,7 +27,7 @@ public class LandingPage extends BasePage {
     }
 
     @Override
-    BasePage open() {
+    public BasePage open() {
         getDriver().get(BASE_URL);
         return this;
     }

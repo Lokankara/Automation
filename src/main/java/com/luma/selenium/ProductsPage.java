@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class ProductPage extends BasePage {
+public class ProductsPage extends BasePage {
 
     String url = "https://magento.softwaretestingboard.com/";
 
@@ -25,12 +25,12 @@ public class ProductPage extends BasePage {
     @FindBy(xpath = "//li[contains(@class, 'item category')][last()]/a")
     private WebElement categoryBtn;
 
-    public ProductPage(WebDriver driver) {
+    public ProductsPage(WebDriver driver) {
         super(driver);
     }
 
     @Override
-    BasePage open() {
+    public BasePage open() {
         getDriver().get(url);
         return this;
     }
@@ -40,7 +40,7 @@ public class ProductPage extends BasePage {
         return new WishlistPage(getDriver());
     }
 
-    public ProductPage addProductToCart() {
+    public ProductsPage addProductToCart() {
         chooseFirstSize();
         chooseFirstColor();
         addToCartBtn.click();

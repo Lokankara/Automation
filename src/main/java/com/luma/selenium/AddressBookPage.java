@@ -17,7 +17,7 @@ public class AddressBookPage extends BasePage {
     }
 
     @Override
-    BasePage open() {
+    public BasePage open() {
         getDriver().get(url);
         return this;
     }
