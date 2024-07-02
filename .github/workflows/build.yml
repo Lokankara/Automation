@@ -47,10 +47,6 @@ jobs:
         if: ${{ matrix.os == 'ubuntu-latest' }}
         run: mvn clean -e install -Dmaven.test.skip=true
 
-      - name: Test Framework
-        if: ${{ matrix.os == 'ubuntu-latest' }}
-        run: mvn clean test -Dtest=FrameworkTest
-
       - name: Cross Browser Testing
         if: ${{ matrix.os == 'ubuntu-latest' }}
         run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml
@@ -58,14 +54,14 @@ jobs:
       - name: Build and Test with Maven
         if: ${{ matrix.os != 'ubuntu-latest' }}
         run: mvn -B package --file pom.xml
-          
+
       - name: Dorny Test Reporter
         uses: dorny/test-reporter@v1.9.1
         if: success() || failure()
         with:
           name: Test Report for ${{ matrix.os }}
           path: target/surefire-reports/TEST-*.xml
-          reporter: java-junit    
+          reporter: java-junit
 
       - name: Load Allure test report history
         uses: actions/checkout@v4

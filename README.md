@@ -43,4 +43,4 @@ Clean, install skip Test
 
 Allure Report
 
-`mvn jacoco:`
+`mvn clean surefire-report:report`

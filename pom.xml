@@ -15,7 +15,7 @@
         <allure.version>2.24.0</allure.version>
         <surefire-plugin>3.2.5</surefire-plugin>
         <hikari>5.1.0</hikari>
-        <postgresql>42.7.1</postgresql>
+        <postgresql>42.7.3</postgresql>
         <jacoco.version>0.8.10</jacoco.version>
         <aspectj.version>1.9.20.1</aspectj.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -34,6 +34,19 @@
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.10.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>5.10.2</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
