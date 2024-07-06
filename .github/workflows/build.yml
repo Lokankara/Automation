@@ -47,6 +47,7 @@ jobs:
         if: ${{ matrix.os == 'ubuntu-latest' }}
         run: mvn clean -e install -Dmaven.test.skip=true
 
+
       - name: Cross Browser Testing
         if: ${{ matrix.os == 'ubuntu-latest' }}
         run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml
