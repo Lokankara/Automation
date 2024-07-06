@@ -1,0 +1,60 @@
+<div>POST to https://magento.softwaretestingboard.com/rest/default/V1/carts/mine/shipping-information</div>
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+{
+    &quot;addressInformation&quot;: {
+        &quot;shipping_method_code&quot;: &quot;flatrate&quot;,
+        &quot;shipping_carrier_code&quot;: &quot;flatrate&quot;,
+        &quot;shipping_address&quot;: {
+            &quot;firstname&quot;: &quot;Automation&quot;,
+            &quot;city&quot;: &quot;Purchase&quot;,
+            &quot;street&quot;: [
+                &quot;123 Oak Ave&quot;
+            ],
+            &quot;region_id&quot;: 43,
+            &quot;postcode&quot;: &quot;10577&quot;,
+            &quot;telephone&quot;: &quot;512-555-1111&quot;,
+            &quot;region&quot;: &quot;New York&quot;,
+            &quot;country_id&quot;: &quot;US&quot;,
+            &quot;email&quot;: &quot;automation_BWi@google.com&quot;,
+            &quot;region_code&quot;: &quot;NY&quot;,
+            &quot;lastname&quot;: &quot;Luma&quot;
+        }
+    }
+}    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Accept: application/json, application/javascript, text/javascript, text/json</div>
+        <div>Content-Type: application/json</div>
+</div>
+
+
+
+<h4>Curl</h4>
+<div>
+curl -v -X POST &#39;https://magento.softwaretestingboard.com/rest/default/V1/carts/mine/shipping-information&#39; -H &#39;Accept: application/json, application/javascript, text/javascript, text/json&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;addressInformation&quot;: {
+        &quot;shipping_method_code&quot;: &quot;flatrate&quot;,
+        &quot;shipping_carrier_code&quot;: &quot;flatrate&quot;,
+        &quot;shipping_address&quot;: {
+            &quot;firstname&quot;: &quot;Automation&quot;,
+            &quot;city&quot;: &quot;Purchase&quot;,
+            &quot;street&quot;: [
+                &quot;123 Oak Ave&quot;
+            ],
+            &quot;region_id&quot;: 43,
+            &quot;postcode&quot;: &quot;10577&quot;,
+            &quot;telephone&quot;: &quot;512-555-1111&quot;,
+            &quot;region&quot;: &quot;New York&quot;,
+            &quot;country_id&quot;: &quot;US&quot;,
+            &quot;email&quot;: &quot;automation_BWi@google.com&quot;,
+            &quot;region_code&quot;: &quot;NY&quot;,
+            &quot;lastname&quot;: &quot;Luma&quot;
+        }
+    }
+}&#39;
+</div>

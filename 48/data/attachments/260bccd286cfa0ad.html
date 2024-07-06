@@ -1,0 +1,38 @@
+<div>POST to https://magento.softwaretestingboard.com/rest/default/V1/customers</div>
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+{
+    &quot;password&quot;: &quot;Tester1234!&quot;,
+    &quot;customer&quot;: {
+        &quot;firstname&quot;: &quot;Automation&quot;,
+        &quot;group_id&quot;: 1,
+        &quot;website_id&quot;: 1,
+        &quot;email&quot;: &quot;automation_BWi@google.com&quot;,
+        &quot;lastname&quot;: &quot;Luma&quot;
+    }
+}    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Accept: application/json, application/javascript, text/javascript, text/json</div>
+        <div>Content-Type: application/json</div>
+</div>
+
+
+
+<h4>Curl</h4>
+<div>
+curl -v -X POST &#39;https://magento.softwaretestingboard.com/rest/default/V1/customers&#39; -H &#39;Accept: application/json, application/javascript, text/javascript, text/json&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;password&quot;: &quot;Tester1234!&quot;,
+    &quot;customer&quot;: {
+        &quot;firstname&quot;: &quot;Automation&quot;,
+        &quot;group_id&quot;: 1,
+        &quot;website_id&quot;: 1,
+        &quot;email&quot;: &quot;automation_BWi@google.com&quot;,
+        &quot;lastname&quot;: &quot;Luma&quot;
+    }
+}&#39;
+</div>
