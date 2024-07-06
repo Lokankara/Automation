@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class MagentoApi {
 
-    private static final String BASE_URL = "https://magento.softwaretestingboard.com/rest/default/V1/";
+    public static final String BASE_URL_REST = "https://magento.softwaretestingboard.com/rest/default/V1/";
     private static final String TOKEN_ENDPOINT = "integration/customer/token/";
     private static final String CUSTOMER_ENDPOINT = "customers/me";
     private static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
@@ -61,7 +61,7 @@ public class MagentoApi {
         }
 
         Request request = new Request.Builder()
-                .url(BASE_URL + CUSTOMER_ENDPOINT)
+                .url(BASE_URL_REST + CUSTOMER_ENDPOINT)
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Authorization", "Bearer " + token.replace("\"", ""))
                 .build();
@@ -85,7 +85,7 @@ public class MagentoApi {
         String json = "{\"username\": \"" + username + "\", \"password\": \"" + password + "\"}";
         RequestBody body = RequestBody.create(json, JSON);
         Request request = new Request.Builder()
-                .url(BASE_URL + TOKEN_ENDPOINT)
+                .url(BASE_URL_REST + TOKEN_ENDPOINT)
                 .post(body)
                 .build();
 

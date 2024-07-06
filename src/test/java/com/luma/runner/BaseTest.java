@@ -13,6 +13,14 @@ import org.testng.annotations.Parameters;
 
 public abstract class BaseTest {
 
+    protected final static String ADMIN = "tester1234@gmail.com";
+    public final static String ADMIN_PASS = "tester1234!";
+    public final static int WEBSITE_ID = 1;
+    public final static int GROUP_ID = 1;
+    public final static String FIRST_NAME = "Automation";
+    public final static String LAST_NAME = "Luma";
+    public final static String PASSWORD = "Tester1234!";
+
     private WebDriver driver;
     private final ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
 
