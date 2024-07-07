@@ -1,0 +1,58 @@
+<div>POST to https://magento.softwaretestingboard.com/rest/default/V1/carts/mine/payment-information</div>
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+{
+    &quot;paymentMethod&quot;: {
+        &quot;method&quot;: &quot;checkmo&quot;
+    },
+    &quot;billing_address&quot;: {
+        &quot;firstname&quot;: &quot;Jamel&quot;,
+        &quot;city&quot;: &quot;Port Susanne&quot;,
+        &quot;street&quot;: [
+            &quot;47627 Neda Mountains&quot;
+        ],
+        &quot;region_id&quot;: 2,
+        &quot;postcode&quot;: &quot;68921-9015&quot;,
+        &quot;telephone&quot;: &quot;(423) 936-2763&quot;,
+        &quot;region&quot;: &quot;Keeblerberg&quot;,
+        &quot;email&quot;: &quot;bernetta.botsford@hotmail.com&quot;,
+        &quot;country_id&quot;: &quot;US&quot;,
+        &quot;region_code&quot;: &quot;NH&quot;,
+        &quot;lastname&quot;: &quot;Gaylord&quot;
+    }
+}    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Accept: application/json, application/javascript, text/javascript, text/json</div>
+        <div>Content-Type: application/json</div>
+</div>
+
+
+
+<h4>Curl</h4>
+<div>
+curl -v -X POST &#39;https://magento.softwaretestingboard.com/rest/default/V1/carts/mine/payment-information&#39; -H &#39;Accept: application/json, application/javascript, text/javascript, text/json&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;paymentMethod&quot;: {
+        &quot;method&quot;: &quot;checkmo&quot;
+    },
+    &quot;billing_address&quot;: {
+        &quot;firstname&quot;: &quot;Jamel&quot;,
+        &quot;city&quot;: &quot;Port Susanne&quot;,
+        &quot;street&quot;: [
+            &quot;47627 Neda Mountains&quot;
+        ],
+        &quot;region_id&quot;: 2,
+        &quot;postcode&quot;: &quot;68921-9015&quot;,
+        &quot;telephone&quot;: &quot;(423) 936-2763&quot;,
+        &quot;region&quot;: &quot;Keeblerberg&quot;,
+        &quot;email&quot;: &quot;bernetta.botsford@hotmail.com&quot;,
+        &quot;country_id&quot;: &quot;US&quot;,
+        &quot;region_code&quot;: &quot;NH&quot;,
+        &quot;lastname&quot;: &quot;Gaylord&quot;
+    }
+}&#39;
+</div>
