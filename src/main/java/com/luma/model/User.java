@@ -1,5 +1,6 @@
 package com.luma.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.javafaker.Faker;
 import lombok.EqualsAndHashCode;
@@ -14,6 +15,7 @@ import java.util.Locale;
 @Getter
 @ToString
 @EqualsAndHashCode
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
 
     public User() {

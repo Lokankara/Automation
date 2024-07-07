@@ -3,7 +3,7 @@ package com.luma.api.services;
 import com.luma.api.payloads.prepareCheckoutPayLoad.PrepareCheckoutPayLoad;
 import io.qameta.allure.Step;
 
-import static com.luma.api.MagentoApi.BASE_URL_REST;
+import static com.luma.api.services.MagentoApiService.BASE_URL_REST;
 
 public class PrepareCheckoutApiService extends ApiService {
     @Step("Setting shipping information")

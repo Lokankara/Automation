@@ -9,7 +9,6 @@ import lombok.experimental.Accessors;
 @Accessors(fluent = true)
 public class UserPayLoad {
 
-
     @JsonProperty("firstname")
     private String firstname;
 
@@ -34,5 +33,4 @@ public class UserPayLoad {
                 ", email='" + email + '\'' +
                 ", lastname='" + lastname + '\'';
     }
-
 }

@@ -4,7 +4,7 @@ import com.luma.api.payloads.createOrderPayLoad.CreateOrderPayLoad;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
-import static com.luma.api.MagentoApi.BASE_URL_REST;
+import static com.luma.api.services.MagentoApiService.BASE_URL_REST;
 
 public class CreateOrderApiService extends ApiService {
 

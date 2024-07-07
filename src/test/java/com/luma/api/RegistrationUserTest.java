@@ -1,48 +1,53 @@
 package com.luma.api;
 
-import com.luma.api.payloads.tokenPayLoad.TokenPayLoad;
+import com.github.javafaker.Faker;
 import com.luma.api.payloads.userPayLoad.Customer;
-import com.luma.api.services.TokenApiService;
 import com.luma.api.services.UserApiService;
-import com.luma.runner.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static org.apache.commons.lang3.RandomStringUtils.randomAlphanumeric;
+import static com.luma.data.TestData.FIRST_NAME;
+import static com.luma.data.TestData.GROUP_ID;
+import static com.luma.data.TestData.LAST_NAME;
+import static com.luma.data.TestData.PASSWORD;
+import static com.luma.data.TestData.TOKEN;
+import static com.luma.data.TestData.WEBSITE_ID;
 
-public class RegistrationUserTest extends BaseTest {
-
-    private final Customer customer = new Customer();
+public class RegistrationUserTest {
     private final UserApiService userApiService = new UserApiService();
-    private final TokenPayLoad tokenPayLoad = new TokenPayLoad();
-    private final TokenApiService tokenApiService = new TokenApiService();
 
     @Test(groups = "smoke")
     public void testCanRegisterNewUser() {
-        String randEmail = "automation_" + randomAlphanumeric(3) + "@google.com";
-        customer.setNewCustomerData(randEmail, FIRST_NAME, LAST_NAME, WEBSITE_ID, GROUP_ID, PASSWORD);
+        Customer customer = new Customer().create(FIRST_NAME, LAST_NAME, WEBSITE_ID, GROUP_ID, PASSWORD);
+
         userApiService.registerNewUser(customer)
                 .then()
-                .assertThat().statusCode(200);
-
+                .assertThat()
+                .statusCode(200);
     }
 
     @Test
     public void testCanNotRegisterNewUserWithoutData() {
-        customer.setNewCustomerData("", "", "", WEBSITE_ID, GROUP_ID, PASSWORD);
+        Customer customer = new Customer().create("", "", "", WEBSITE_ID, GROUP_ID, PASSWORD);
+
         String message = userApiService
                 .registerNewUser(customer)
                 .then()
-                .assertThat().statusCode(400)
+                .assertThat()
+                .statusCode(400)
                 .and()
-                .extract().response().getBody().asString();
+                .extract()
+                .response()
+                .getBody()
+                .asString();
+
         Assert.assertEquals(message, "{\"message\":\"The customer email is missing. Enter and try again.\"}");
     }
 
     @Test
     public void testCanNotRegisterNewUserTwice() {
-        String randEmail = "automation_" + randomAlphanumeric(3) + "@google.com";
-        customer.setNewCustomerData(randEmail, FIRST_NAME, LAST_NAME, WEBSITE_ID, GROUP_ID, PASSWORD);
+        Customer customer = new Customer().create(FIRST_NAME, LAST_NAME, WEBSITE_ID, GROUP_ID, PASSWORD);
+
         userApiService.registerNewUser(customer);
         String message = userApiService.registerNewUser(customer)
                 .then()
@@ -53,21 +58,32 @@ public class RegistrationUserTest extends BaseTest {
 
     }
 
-//    @Test
+    @Test
     public void testCanDeleteUser() {
-        String randEmail = "automation_" + randomAlphanumeric(3) + "@google.com";
-        customer.setNewCustomerData(randEmail, FIRST_NAME, LAST_NAME, WEBSITE_ID, GROUP_ID, PASSWORD);
-        tokenPayLoad.username(ADMIN).password(ADMIN_PASS);
-        String token = tokenApiService.getAdminToken(tokenPayLoad);
+        String firstName = Faker.instance().name().firstName();
+        String lastName = Faker.instance().name().lastName();
+        Customer customer = new Customer().create(firstName, lastName, WEBSITE_ID, GROUP_ID, PASSWORD);
+
         int userId = userApiService.registerNewUser(customer)
                 .then()
-                .assertThat().statusCode(200)
+                .assertThat()
+                .statusCode(200)
                 .and()
-                .extract().response().body().jsonPath().get("id");
+                .extract()
+                .response()
+                .body()
+                .jsonPath()
+                .get("id");
 
-        String result = userApiService.deleteUser(token, String.valueOf(userId))
-                .then().assertThat().statusCode(200)
-                .extract().response().asString();
+        String result = userApiService
+                .deleteUser(TOKEN, String.valueOf(userId))
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .extract()
+                .response()
+                .asString();
+
         Assert.assertEquals(result, "true");
     }
 }

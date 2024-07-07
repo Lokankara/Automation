@@ -13,14 +13,6 @@ import org.testng.annotations.Parameters;
 
 public abstract class BaseTest {
 
-    protected final static String ADMIN = "tester1234@gmail.com";
-    public final static String ADMIN_PASS = "tester1234!";
-    public final static int WEBSITE_ID = 1;
-    public final static int GROUP_ID = 1;
-    public final static String FIRST_NAME = "Automation";
-    public final static String LAST_NAME = "Luma";
-    public final static String PASSWORD = "Tester1234!";
-
     private WebDriver driver;
     private final ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
 
@@ -33,8 +25,6 @@ public abstract class BaseTest {
     @Parameters("browser")
     @BeforeMethod(alwaysRun = true)
     protected void setupDriver(@Optional("chrome") String browser, ITestContext context, ITestResult result) {
-        Reporter.log("______________________________________________________________________", true);
-
         this.driver = DriverUtils.createDriver(browser, this.driver);
         this.threadLocalDriver.set(driver);
 
@@ -54,18 +44,14 @@ public abstract class BaseTest {
     @Parameters("browser")
     @AfterMethod(alwaysRun = true)
     protected void tearDown(@Optional("chrome") String browser, ITestResult result) {
-        Reporter.log(result.getMethod().getMethodName() + ": " + ReportUtils.getTestStatus(result),
-                true);
+        Reporter.log(result.getMethod().getMethodName() + ": " + ReportUtils.getTestStatus(result), true);
 
         if (getDriver() != null) {
             getDriver().quit();
             Reporter.log("INFO: " + browser.toUpperCase() + " driver closed.", true);
-
             Reporter.log("After Test Thread ID: " + Thread.currentThread().getId(), true);
             threadLocalDriver.remove();
-
             driver = null;
-
         } else {
             Reporter.log("INFO: Driver is null.", true);
         }

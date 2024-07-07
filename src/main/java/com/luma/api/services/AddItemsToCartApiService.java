@@ -2,7 +2,7 @@ package com.luma.api.services;
 
 import com.luma.api.payloads.addItemsToCartPayload.AddItemsToCartPayLoad;
 
-import static com.luma.api.MagentoApi.BASE_URL_REST;
+import static com.luma.api.services.MagentoApiService.BASE_URL_REST;
 
 public class AddItemsToCartApiService extends ApiService {
 

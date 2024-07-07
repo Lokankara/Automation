@@ -1,18 +1,23 @@
 package com.luma.api;
 
-import com.luma.api.payloads.addressPayLoad.AddressesItem;
 import com.luma.api.payloads.tokenPayLoad.TokenPayLoad;
 import com.luma.api.payloads.updateUserPayLoad.UpdateUserPayLoad;
 import com.luma.api.payloads.userPayLoad.Customer;
 import com.luma.api.services.TokenApiService;
 import com.luma.api.services.UserApiService;
-import com.luma.runner.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static com.luma.data.TestData.ADMIN;
+import static com.luma.data.TestData.ADMIN_PASS;
+import static com.luma.data.TestData.FIRST_NAME;
+import static com.luma.data.TestData.GROUP_ID;
+import static com.luma.data.TestData.LAST_NAME;
+import static com.luma.data.TestData.PASSWORD;
+import static com.luma.data.TestData.WEBSITE_ID;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphanumeric;
 
-public class UpdateUserDataTest extends BaseTest {
+public class UpdateUserDataTest {
 
     private final Customer customer = new Customer();
     private final UserApiService userApiService = new UserApiService();
@@ -20,14 +25,14 @@ public class UpdateUserDataTest extends BaseTest {
     private final TokenApiService tokenApiService = new TokenApiService();
     private final UpdateUserPayLoad updateUserPayLoad = new UpdateUserPayLoad();
 
-//    @Test
+    //    @Test
     public void testCanUpdateUserFirstNameAndLastName() {
 
         String randEmail = "automation_" + randomAlphanumeric(3) + "@google.com";
         String updated_firstname = "Automation_Updated";
         String updated_lastname = "Test_Updated";
 
-        customer.setNewCustomerData(randEmail, FIRST_NAME, LAST_NAME, WEBSITE_ID, GROUP_ID, PASSWORD);
+        customer.create(FIRST_NAME, LAST_NAME, WEBSITE_ID, GROUP_ID, PASSWORD);
         tokenPayLoad.username(ADMIN).password(ADMIN_PASS);
         String token = tokenApiService.getAdminToken(tokenPayLoad);
 
@@ -50,7 +55,7 @@ public class UpdateUserDataTest extends BaseTest {
     public void testCanAddAddressForUser() {
 
         String randEmail = "automation_" + randomAlphanumeric(3) + "@google.com";
-        customer.setNewCustomerData(randEmail, FIRST_NAME, LAST_NAME, WEBSITE_ID, GROUP_ID, PASSWORD);
+        customer.create(FIRST_NAME, LAST_NAME, WEBSITE_ID, GROUP_ID, PASSWORD);
 
 
         int userId = userApiService.registerNewUser(customer)
@@ -59,8 +64,5 @@ public class UpdateUserDataTest extends BaseTest {
                 .and()
                 .extract().response().body().jsonPath().get("id");
         tokenPayLoad.username(randEmail).password(PASSWORD);
-        String token = tokenApiService.getAdminToken(tokenPayLoad);
-        AddressesItem addressesItem = new AddressesItem();
-
     }
 }

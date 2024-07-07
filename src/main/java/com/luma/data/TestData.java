@@ -29,4 +29,13 @@ public class TestData {
     public static final String DRIVEN_BACKPACK_PRODUCT_URL = BASE_URL + "/driven-backpack.html";
     public static final String DRIVEN_BACKPACK_PRODUCT_NAME = "Driven Backpack";
     public static final String DRIVEN_BACKPACK_PRODUCT_PAGE_BREADCRUMBS_MENU = "Home Gear Bags Driven Backpack";
+
+    public final static String TOKEN = "cdxf96vcah8pbivc3zzrshd8t15ikua5";
+    public final static String ADMIN = "tester1234@gmail.com";
+    public final static String ADMIN_PASS = "tester1234!";
+    public final static int WEBSITE_ID = 1;
+    public final static int GROUP_ID = 1;
+    public final static String FIRST_NAME = "Tester";
+    public final static String LAST_NAME = "Automation";
+    public final static String PASSWORD = "Tester1234!";
 }

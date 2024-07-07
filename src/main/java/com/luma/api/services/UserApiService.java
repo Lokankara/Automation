@@ -5,7 +5,7 @@ import com.luma.api.payloads.userPayLoad.Customer;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
-import static com.luma.api.MagentoApi.BASE_URL_REST;
+import static com.luma.api.services.MagentoApiService.BASE_URL_REST;
 
 public class UserApiService extends ApiService {
 

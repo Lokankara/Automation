@@ -1,6 +1,7 @@
 package com.luma.api.payloads.prepareCheckoutPayLoad;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.luma.api.payloads.addressPayLoad.AddressPayLoad;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -20,33 +21,22 @@ public class PrepareCheckoutPayLoad {
         return "" + addressInformation;
     }
 
-    public PrepareCheckoutPayLoad setCheckoutData(String region,
-                                                  int regionId,
-                                                  String regionCode,
-                                                  String countryCode,
-                                                  List<String> street,
-                                                  String postCode,
-                                                  String city,
-                                                  String firstName,
-                                                  String lastName,
-                                                  String randEmail,
-                                                  String telephone,
+    public PrepareCheckoutPayLoad setCheckoutData(AddressPayLoad addressPayLoad,
                                                   String shippingMethod,
-                                                  String shippingCarrierCode
-                                                  ) {
+                                                  String shippingCarrierCode) {
         return addressInformation(new AddressInformation().shippingAddress(
-                new ShippingAddress()
-                        .region(region)
-                        .regionId(regionId)
-                        .regionCode(regionCode)
-                        .countryId(countryCode)
-                        .street(street)
-                        .postcode(postCode)
-                        .city(city)
-                        .firstname(firstName)
-                        .lastname(lastName)
-                        .email(randEmail)
-                        .telephone(telephone))
+                        new ShippingAddress()
+                                .region(addressPayLoad.region())
+                                .regionId(addressPayLoad.regionId())
+                                .regionCode(addressPayLoad.regionCode())
+                                .countryId(addressPayLoad.countryCode())
+                                .street(addressPayLoad.street())
+                                .postcode(addressPayLoad.postCode())
+                                .city(addressPayLoad.city())
+                                .firstname(addressPayLoad.firstName())
+                                .lastname(addressPayLoad.lastName())
+                                .email(addressPayLoad.email())
+                                .telephone(addressPayLoad.telephone()))
                 .shippingCarrierCode(shippingMethod)
                 .shippingMethodCode(shippingCarrierCode));
     }

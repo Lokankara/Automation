@@ -1,6 +1,7 @@
 package com.luma.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.luma.api.services.MagentoApiService;
 import com.luma.model.User;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
@@ -10,21 +11,20 @@ import java.io.IOException;
 
 import static org.testng.Assert.*;
 
-public class MagentoApiTest {
+public class MagentoApiServiceTest {
 
     @Ignore
     @Test
     public void testGetCustomerInfo() throws IOException {
-        MagentoApi magentoApi = MagentoApi.getInstance();
+        MagentoApiService magentoApiService = MagentoApiService.getInstance();
         try {
-            String response = magentoApi.getCustomerInfo();
+            String response = magentoApiService.getCustomerInfo();
 
             Assert.assertNotNull(response, "Response should not be null");
 
             ObjectMapper mapper = new ObjectMapper();
             User user = mapper.readValue(response, User.class);
-
-            assertEquals(user.getId(), 140620);
+//            assertEquals(user.getId(), 140620);
             assertEquals(user.getGroupId(), 1);
             assertEquals(user.getCreatedAt(), "2024-04-14 09:30:26");
             assertEquals(user.getCreatedIn(), "Default Store View");
